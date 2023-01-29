@@ -6,7 +6,7 @@ import MealItem from "./MealItem/MealItem"
 const AvailableMeals = () =>{
 
     const [meals,setMeals] = useState([])
-    const [reload,setReload] = useState(false)
+    
 
     async function fetchData(){
                 const response = await fetch('http://localhost:8080/web/getToken',{
@@ -50,26 +50,17 @@ const AvailableMeals = () =>{
    
     
     useEffect(()=>{
-      
-       const interval = setInterval(()=>{
         fetchData()
-       },900000)
-
-       return () => {
-        clearInterval(interval)
-       }
-
-    },[reload])  
-    
-    useEffect(()=>{
-          fetchData()
+        setInterval(()=>{
+            fetchData()
+           },900000)
     },[])
  
   
     return (
         <section className={classes.meals}>
            <Card>
-              <button className={classes.button} onClick={() => setReload((oldState)=>!oldState)}>Reload</button>
+              <button className={classes.button} onClick={() => fetchData()}>Reload</button>
                 <ul>
                     {meals.map((meal) => {
                         return <MealItem 
