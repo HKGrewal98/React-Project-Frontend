@@ -3,6 +3,7 @@ import Cart from './components/Cart/Cart';
 import Header from "./components/Layout/Header";
 import Meals from './components/Meals/Meals';
 import { MealContextProvider } from './store/MealItemContext';
+import Login from './components/Login/Login'
 
 function App() {
   
@@ -13,13 +14,14 @@ function App() {
   const disableCart = () => setCartVisible(false)
   
   return (
-       <MealContextProvider>
-        {cartVisible &&  <Cart disableCart={disableCart} />}
-        <Header showCart={showCart} />
-        <main>
-          <Meals/>
-        </main>
-        </MealContextProvider>
+      <Login/>
+      //  <MealContextProvider>
+      //   {cartVisible &&  <Cart disableCart={disableCart} />}
+      //   <Header showCart={showCart} />
+      //   <main>
+      //     <Meals/>
+      //   </main>
+      //   </MealContextProvider>
   );
 }
 
