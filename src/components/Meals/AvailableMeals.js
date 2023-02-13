@@ -1,52 +1,55 @@
-import React,{useEffect,useState} from "react"
+import React,{useEffect,useState,useContext,useCallback} from "react"
 import Card from "../UI/Card"
 import classes from './AvailableMeals.module.css'
 import MealItem from "./MealItem/MealItem"
+import mealContext from "../../store/MealItemContext"
 
 const AvailableMeals = () =>{
 
     const [meals,setMeals] = useState([])
+
+    const ctx = useContext(mealContext)
     
+    const fetchData = useCallback(async ()=>{
+        const response = await fetch('http://localhost:8080/web/getToken',{
+            method:'POST',
+            headers :{
+                "Content-type":"application/json",
+                'Access-Control-Allow-Origin':'*',
+                "Accept": 'application/json',
+            },
+            body:JSON.stringify({"clientId":"frontend"})
+            })
+      
+            const data = await response.json()
+            console.log(data.accessToken)
+           
+        
 
-    async function fetchData(){
-                const response = await fetch('http://localhost:8080/web/getToken',{
-                method:'POST',
-                headers :{
-                    "Content-type":"application/json",
-                    'Access-Control-Allow-Origin':'*',
-                    "Accept": 'application/json',
-                },
-                body:JSON.stringify({"clientId":"frontend"})
-                })
 
-                const data = await response.json()
-                console.log(data.accessToken)
+      const mealResponse = await fetch('http://localhost:8080/menu',{
+          headers:{
+              "Content-type":"application/json",
+              'Access-Control-Allow-Origin':'*',
+              "Accept": 'application/json',
+              "Authorization" : data.accessToken
+          }
+      })
 
+      const mealData = await mealResponse.json()
 
-                const mealResponse = await fetch('http://localhost:8080/menu',{
-                    headers:{
-                        "Content-type":"application/json",
-                        'Access-Control-Allow-Origin':'*',
-                        "Accept": 'application/json',
-                        "Authorization" : data.accessToken
-                    }
-                })
+      const updatedData = mealData.map((meal)=>{
+              return {
+                  ...meal,
+                  id:meal._id
+              }
+      })
 
-                const mealData = await mealResponse.json()
+  
 
-                const updatedData = mealData.map((meal)=>{
-                        return {
-                            ...meal,
-                            id:meal._id
-                        }
-                })
-
-            
-
-                setMeals(updatedData)
-                console.log(updatedData)
-
-   }   
+      setMeals(updatedData)
+      console.log(updatedData)
+    },[])   
    
     
     useEffect(()=>{
@@ -54,7 +57,7 @@ const AvailableMeals = () =>{
         setInterval(()=>{
             fetchData()
            },900000)
-    },[])
+    },[fetchData])
  
   
     return (

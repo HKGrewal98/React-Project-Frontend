@@ -8,7 +8,7 @@ import Checkout from "./Checkout";
 export default function Cart(props){
 
     const ctx = useContext(mealContext)
-
+    
     const[showConfirmForm,setShowConfirmForm]  = useState(false)
     const [billAmount,setBillAmount] = useState(0)
 

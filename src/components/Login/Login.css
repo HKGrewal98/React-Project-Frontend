@@ -1,4 +1,4 @@
-body{
+.loginMaster{
 	margin: 0;
 	padding: 0;
 	display: flex;
@@ -27,7 +27,16 @@ body{
 	width:100%;
 	height: 100%;
 }
-label{
+
+.signup p{
+	color: #e71111;
+	text-align: center;
+	font-size: small;
+}
+
+.forms {}
+
+.forms label{
 	color: #fff;
 	font-size: 2.3em;
 	justify-content: center;
@@ -37,7 +46,7 @@ label{
 	cursor: pointer;
 	transition: .5s ease-in-out;
 }
-input{
+.forms input{
 	width: 60%;
 	height: 30px;
 	background: #e0dede;
@@ -49,7 +58,7 @@ input{
 	outline: none;
 	border-radius: 5px;
 }
-button{
+.loginButton {
 	width: 60%;
 	height: 40px;
 	margin: 10px auto;
@@ -66,7 +75,7 @@ button{
 	transition: .2s ease-in;
 	cursor: pointer;
 }
-button:hover{
+.loginButton:hover{
 	background: rgb(121, 31, 31);
 }
 .login{
