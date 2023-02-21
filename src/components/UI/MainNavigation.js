@@ -11,7 +11,7 @@ import { NavLink } from 'react-router-dom'
                     <li><NavLink to="/ottomons" className={(isActive)=> isActive ? classes.active : undefined}>About</NavLink></li>
                     <li><NavLink to="/ottomons/reviews" className={(isActive)=> isActive ? classes.active : undefined}>Reviews</NavLink></li>
                     <li><NavLink to="/ottomons/jobs" className={(isActive)=> isActive ? classes.active : undefined}>Jobs</NavLink></li>
-                    <li><NavLink to="/ottomons/booking" className={(isActive)=> isActive ? classes.active : undefined}>Bookings</NavLink></li>
+                    <li><NavLink to="/ottomons/contactus" className={(isActive)=> isActive ? classes.active : undefined}>Contact Us</NavLink></li>
                 </ul>
             </nav>
         </header>
