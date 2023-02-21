@@ -1,4 +1,5 @@
 Learnings
+Learnings
 1: Learnt How to use props.
 2: How to transfer data from the child to parent components(back propogation) and vice-versa.
 3: Learnt about context API and how can it be useful in managing app wide state.
@@ -13,5 +14,11 @@ Challenges:
 4: Understanding the robust nature of react hooks.
 5: Adding proper styling to the components.
 
-Harkanwal Grewal
-n01494838
+Harkanwal Grewal (N01494838) : Main Page , Cart Page , Context Creation and Logic , Routing , Meals Page , Creation of backend APIs to fetch meals , creation of all mongoDB models (ORM) , implementation of sendEmail interface when user signsUp and order food from the resturant. 
+
+Kashish (N01569020) : Login Page , Address Page and User creation api's to signIn/signUp user and JWT implementation at backend.
+
+Sonal Pooja (N01474010) : Contact Page and Reviews Page and Backend API and model design to post/get reviews
+
+Priya Mary Joseph (N01468981) : Payment Page and AboutUs Page and Backend API and model design to submit order
+
