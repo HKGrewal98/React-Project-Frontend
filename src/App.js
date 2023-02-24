@@ -8,7 +8,7 @@ import {createBrowserRouter,RouterProvider} from 'react-router-dom'
 import About from './components/Pages/About';
 import Reviews from './components/Pages/Reviews';
 import Jobs from './components/Pages/Jobs';
-import Booking from './components/Pages/Booking';
+import ContactUs from './components/Pages/ContactUs';
 import Root from './components/Pages/Root';
 
 function App() {
@@ -67,7 +67,7 @@ function App() {
     {index:true,element:<About/>},
     {path:'reviews',element:<Reviews/>},
     {path:'jobs',element:<Jobs/>},
-    {path:'booking',element:<Booking/>}
+    {path:'contactus',element:<ContactUs/>}
     ] 
   
     },
