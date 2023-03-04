@@ -9,12 +9,22 @@
   width: 75%;
 }
 .title {
-  color: darkslategrey;
+  color: rgb(197, 62, 62);
   text-align: center;
   font-weight: bold;
   font-size: 30px;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 .desc {
   padding: 0 40px 40px 40px;
-  color: red;
+  color: white;
+}
+.aboutImage {
+  background-image: url("../../../public/about.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.sub_desc {
+  background-color: rgba(0, 0, 0, 0.5);
 }
