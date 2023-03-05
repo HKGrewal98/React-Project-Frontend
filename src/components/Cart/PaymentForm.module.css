@@ -1,0 +1,11 @@
+.payment_form {
+  color: rgb(233, 83, 83);
+  overflow: hidden;
+  border-radius: 5px;
+  padding: 1rem;
+  box-shadow: 5px 20px 50px #000;
+  background: linear-gradient(to bottom, #706f73, #312f3b, #07070c);
+}
+.submit_button {
+  margin-top: 10px;
+}
