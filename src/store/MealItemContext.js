@@ -9,7 +9,9 @@ const mealContext = React.createContext({
     isLogined : false,
     jwt:null ,
     setUserLogin : (isLogin) => {},
-    setAuthJWT : (token) => {} 
+    setAuthJWT : (token) => {},
+    setLoginedUser:(id,name,email)=>{},
+    getUser:()=>{}
 })
 
 
@@ -24,6 +26,24 @@ export function MealContextProvider(props){
    const[selectedItems,setSelectedItems] = useReducer(maintainCart,{cartItems : [] , totalAmount:0})
    const[isLogined,setIsLogined] = useState(false)
    const[jwt,setJWT] = useState(null)
+   const [user,setUser] = useState({
+    id:"",
+    name:"",
+    email:""
+   })
+
+   const setLoginedUser = (id,name,email) => {
+       const data = {
+        id:id,
+        name:name,
+        email:email
+       }
+       setUser(data)
+   }
+
+   const getUser = () => {
+       return user 
+   }
 
     const  setUserLogin = (isLogin) => {
         setIsLogined(isLogin)
@@ -32,9 +52,6 @@ export function MealContextProvider(props){
     const setAuthJWT = (token) => {
         setJWT(token)
     }
-     
-
-
 
     console.log("cartItems : " + JSON.stringify(selectedItems.cartItems) + " total Amount : " + JSON.stringify(selectedItems.totalAmount))
 
@@ -109,7 +126,9 @@ export function MealContextProvider(props){
             setUserLogin:setUserLogin,
             setAuthJWT:setAuthJWT,
             isLogined:isLogined,
-            jwt:jwt
+            jwt:jwt,
+            setLoginedUser:setLoginedUser,
+            getUser:getUser
             }}>
                    
             {props.children}

@@ -2,9 +2,6 @@ import React from "react";
 import classes from "./Checkout.module.css";
 import { useRef, useState, useContext } from "react";
 import mealContext from "../../store/MealItemContext";
-import Alert from "@mui/material/Alert";
-import AlertTitle from "@mui/material/AlertTitle";
-import Stack from "@mui/material/Stack";
 import { AddressContext } from "../../store/AddressContext";
 import { useNavigate } from "react-router-dom";
 
@@ -28,7 +25,7 @@ const Checkout = (props) => {
   const cityRef = useRef();
 
   const isEmpty = (value) => value.trim() === "";
-  const isSixChars = (value) => value.trim().length === 6;
+  const isSixChars = (value) => value.trim().length === 7 ||  value.trim().length === 6;
 
   const confirmHandler = (event) => {
     setSuccessMessage(null);
@@ -57,14 +54,8 @@ const Checkout = (props) => {
       isEnteredCityValid;
 
     if (isFormValid) {
-      addressCtx.setCity(enteredCity);
-      addressCtx.setPostal(enteredPostal);
-      addressCtx.setStreet(enteredStreet);
-      addressCtx.setHouseNo(enteredhouseNo);
-      //submitOrder(enteredCity,enteredStreet,enteredPostal,enteredhouseNo)
+      addressCtx.setOrderAddress(enteredhouseNo,enteredStreet,enteredPostal,enteredCity)
       navigate("/ottomons/payment");
-      ctx.clearCart();
-      // props.onCancel()
       return;
     }
   };
@@ -90,6 +81,7 @@ const Checkout = (props) => {
           <input
             type="text"
             id="houseNo"
+            defaultValue={addressCtx.getOrderAddress().houseNo}
             ref={houseNoRef}
             onBeforeInput={onBeforeInputHandler}
           />
@@ -104,6 +96,7 @@ const Checkout = (props) => {
           <input
             type="text"
             id="street"
+            defaultValue={addressCtx.getOrderAddress().street}
             ref={streetRef}
             onBeforeInput={onBeforeInputHandler}
           />
@@ -119,6 +112,7 @@ const Checkout = (props) => {
             type="text"
             id="postal"
             ref={postalRef}
+            defaultValue={addressCtx.getOrderAddress().postal}
             onBeforeInput={onBeforeInputHandler}
           />
           {!formValidity.postal && (
@@ -134,6 +128,7 @@ const Checkout = (props) => {
           <input
             type="text"
             id="city"
+            defaultValue={addressCtx.getOrderAddress().city}
             ref={cityRef}
             onBeforeInput={onBeforeInputHandler}
           />

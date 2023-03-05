@@ -9,11 +9,11 @@ export default function Cart(props) {
   const ctx = useContext(mealContext);
 
   const [showConfirmForm, setShowConfirmForm] = useState(false);
-  const [billAmount, setBillAmount] = useState(0);
+  // const [billAmount, setBillAmount] = useState(0);
 
-  useEffect(() => {
-    setBillAmount(ctx.totalAmount);
-  }, [showConfirmForm]);
+  // useEffect(() => {
+  //   setBillAmount(ctx.totalAmount);
+  // }, [showConfirmForm]);
 
   const hasItems = ctx.cartItems.length !== 0;
 
@@ -51,7 +51,7 @@ export default function Cart(props) {
       {cartItems}
       <div className={classes.total}>
         <span>Total Amount</span>
-        <span>{billAmount}</span>
+        <span>{ctx.totalAmount}</span>
       </div>
 
       {showConfirmForm && <Checkout onCancel={clickHandler} />}

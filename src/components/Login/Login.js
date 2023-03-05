@@ -110,6 +110,8 @@ function Login(){
 				setMsgLevel("info")
 				setShowMsg(true)
 			 }else{
+				const {id,name,email} = result.user
+				ctx.setLoginedUser(id,name,email)
 				ctx.setUserLogin(true)
 				navigate("/ottomonMenu")
 			 }
