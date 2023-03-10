@@ -4,10 +4,12 @@ import classes from "./Payment.module.css";
 
 export default function Payment() {
   return (
-    <div className={`container p-0 body w-50 title ${classes.title}`}>
-      <div class="card px-4 d-flex justify-content-center">
-        <p class="h6 py-3 m-auto fs-2 fw-bolder">Payment Details</p>
-        <PaymentForm />
+    <div className={`container w-50 p-0 body title ${classes.title}`}>
+      <div class="card d-flex ">
+        <div class=" border border-dark m-4">
+          <p class="h6 py-3 fs-2 mt-3 fw-bolder text-center">Payment Details</p>
+          <PaymentForm />
+        </div>
       </div>
     </div>
   );

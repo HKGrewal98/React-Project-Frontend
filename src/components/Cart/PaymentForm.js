@@ -106,12 +106,15 @@ const PaymentForm = (props) => {
         </Stack>
       )}
 
-      <form class="row gx-3" onSubmit={handleSubmit(onSubmitHandler)}>
-        <div class="col-12">
+      <form
+        class="row justify-content-center gx-3"
+        onSubmit={handleSubmit(onSubmitHandler)}
+      >
+        <div class="col-10">
           <div class="d-flex flex-column">
             <p class="text mb-1 fw-bold">Name: </p>
             <input
-              class="form-control mb-3 w-75"
+              class="form-control mb-3"
               type="text"
               id="name"
               name="name"
@@ -127,16 +130,16 @@ const PaymentForm = (props) => {
                 },
               })}
             />
-            <p style={{ color: "yellow", fontSize: "10px" }}>
+            <p style={{ color: "#f30328", fontSize: "10px" }}>
               {errors.name?.message}
             </p>
           </div>
         </div>
-        <div class="col-12">
+        <div class="col-10">
           <div class="d-flex flex-column">
             <p class="text mb-1 fw-bold">Card Number: </p>
             <input
-              class="form-control mb-3 w-50"
+              class="form-control mb-3"
               type="text"
               id="cardNumber"
               name="cardNumber"
@@ -152,16 +155,16 @@ const PaymentForm = (props) => {
                 },
               })}
             />
-            <p style={{ color: "yellow", fontSize: "10px" }}>
+            <p style={{ color: "#f30328", fontSize: "10px" }}>
               {errors.cardNumber?.message}
             </p>
           </div>
         </div>
-        <div class="col-12">
+        <div class="col-10">
           <div class="d-flex flex-column">
             <p class="text mb-1 fw-bold">Expiry (MM/YY): </p>
             <input
-              class="form-control mb-3 w-25"
+              class="form-control mb-3"
               type="text"
               id="expiry"
               name="expiry"
@@ -174,16 +177,16 @@ const PaymentForm = (props) => {
                 },
               })}
             />
-            <p style={{ color: "yellow", fontSize: "10px" }}>
+            <p style={{ color: "#f30328", fontSize: "10px" }}>
               {errors.expiry?.message}
             </p>
           </div>
         </div>
-        <div class="col-12">
+        <div class="col-10">
           <div class="d-flex flex-column">
             <p class="text mb-1 fw-bold">CVV: </p>
             <input
-              class="form-control mb-3 w-25"
+              class="form-control mb-3"
               type="password"
               id="cvv"
               name="cvv"
@@ -200,16 +203,16 @@ const PaymentForm = (props) => {
                 },
               })}
             />
-            <p style={{ color: "yellow", fontSize: "10px" }}>
+            <p style={{ color: "#f30328", fontSize: "10px" }}>
               {errors.cvv?.message}
             </p>
           </div>
         </div>
-        <div class="col-12">
+        <div class="col-10">
           <div class="d-flex flex-column">
             <p class="text mb-1 fw-bold">Payment Mode: </p>
             <select
-              class="w-50 mb-3"
+              class="form-control mb-3"
               id="paymentMode"
               name="paymentMode"
               {...register("paymentMode")}
@@ -220,8 +223,8 @@ const PaymentForm = (props) => {
             </select>
           </div>
         </div>
-        <div class="col-12">
-          <button class="btn btn-primary btn-lg raised mb-3" type="submit">
+        <div class="col-10 text-end my-4">
+          <button class="btn btn-primary btn-lg w-25 raised mb-3" type="submit">
             Submit
           </button>
         </div>
