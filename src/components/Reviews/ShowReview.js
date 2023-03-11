@@ -1,60 +1,57 @@
 import React, { useState, useEffect } from 'react';
-import './Reviews.css'; // import CSS file
+import StarRatings from 'react-star-ratings'; // converting ratings to stars
+import './Reviews.css';
 
-const ShowReview = () => {
+const Reviews = () => {
   const [reviews, setReviews] = useState([]);
 
-  // counting each rating
-  const ratingsCount = reviews.reduce((count, review) => {
-    const rating = review.rating;
-    return {
-      ...count,
-      [rating]: (count[rating] || 0) + 1,
-    };
-  }, {});
-  //counting reviews by each reviewer
-  const reviewersCount = reviews.reduce((count, review) => {
-    const user = review.name;
-    return {
-      ...count,
-      [user]: (count[user] || 0) + 1,
-    };
-  }, {});
-  //ratings table
-  const ratingsTableRows = Object.keys(ratingsCount).map(rating => (
-    <tr key={rating}>
-      <td>{rating}</td>
-      <td>{ratingsCount[rating]}</td>
-    </tr>
-  ));
+useEffect(() => {
+  fetch('http://localhost:8080/reviews')
+  .then((res) => res.json())
+  .then((data) => setReviews(data))
+  .catch((err) => console.error(err));
+}, []);
 
-  useEffect(() => {
-    fetch('http://localhost:8080/reviews')
-      .then((res) => res.json())
-      .then((data) =>
-        setReviews(data)
-      )
-      .catch((err) => console.error(err));
-  }, []);
-  
+const ratingsCount = reviews.reduce((count, review) => {
+  const rating = review.rating;
+  return {
+  ...count,
+  [rating]: (count[rating] || 0) + 1,
+  };
+}, {});
 
-  return (
-    <div className="form-section">
-      <h3>Reviews : </h3>
-      <ul>
-        {reviews.map(review => (
-          <li key={review.id}>
-            <p>{review.name}</p>
-            <p>Rating: {review.rating}</p>
-            <p>{review.message}</p>
-          </li>
-        ))}
-      </ul>
-      <h3>Ratings Count :</h3>
+const ratingsTableRows = Object.keys(ratingsCount).map(rating => (
+  <tr key={rating}>
+  <td className="star">{'\u2605'.repeat(rating)}{'\u2606'.repeat(5 - rating)}</td>
+  <td>{ratingsCount[rating]}</td>
+  </tr>
+));
+
+return (
+  <div className="reviews-section">
+    <h2>Reviews : </h2>
+    <ul>
+      {reviews.map(review => (
+      <li key={review.id}>
+        <p>{review.name} &emsp; &emsp; &emsp; &emsp; 
+          <StarRatings
+            rating={review.rating}
+            starDimension="20px"
+            starSpacing="2px"
+            starRatedColor="gold"
+            numberOfStars={5}
+           />
+        </p>
+        <p>{review.message}</p>
+      </li>
+      ))}
+    </ul><br/>
+    <div className="ratings-table">
+      <h2>Ratings Summary :</h2>
       <table>
         <thead>
           <tr>
-            <th>Rating</th>
+            <th>Ratings</th>
             <th>Count</th>
           </tr>
         </thead>
@@ -63,7 +60,7 @@ const ShowReview = () => {
         </tbody>
       </table>
     </div>
-  );
+  </div>
+);
 }
-
-export default ShowReview;
+export default Reviews;

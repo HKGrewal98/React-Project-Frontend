@@ -9,7 +9,15 @@ const ReviewForm = () => {
   
   const handleSubmit = (event) => {
     event.preventDefault();
+    // Display success alert message
+    alert('Review stored successfully!');
+    // Reset form fields
+    setName('');
+    setRating(0);
+    setMessage('');
+
     const newReview = { name, rating, message };
+    //fetch data from backend and db
     fetch('http://localhost:8080/reviews', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },

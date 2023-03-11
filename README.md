@@ -18,7 +18,7 @@ Harkanwal Grewal (N01494838) : Main Page , Cart Page , Context Creation and Logi
 
 Kashish (N01569020) : Login Page , Address Page and User creation api's to signIn/signUp user and JWT implementation at backend.
 
-Sonal Pooja (N01474010) : Contact Page and Reviews Page and Backend API and model design to post/get reviews
+Sonal Pooja (N01474010) : Contact Page and Reviews Page and Backend API and model design to submit a review, fetching reviews and ratings data from reviews table, getting static data from Backend for Contact page, reviews table in mongoDB, created forms to submit reviews and for contacting the restaurant.
 
 Priya Mary Joseph (N01468981) : Payment Page and AboutUs Page and Backend API and model design to submit order
 

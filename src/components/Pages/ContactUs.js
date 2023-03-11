@@ -1,21 +1,46 @@
-import {Link} from 'react-router-dom'
+import React, { useState, useEffect } from 'react';
+import ContactDetails from '../ContactUs/ContactDetails';
+import ContactForm from '../ContactUs/ContactForm';
+import '../ContactUs/contact.css'; // import CSS file
 
-export default function ContactUs(){
-    return (
-        <div style={{color:"white", marginTop:"100px"}}>
-        <h1>Contact Us</h1><br/>
-        <h3>
-            Phone : (647)-843-7890<br /><br/>
-            Email : ottomonsfood@gmail.com<br /><br/>
-            Address : 205 Humber College Blvd., Toronto, Ontario, Canada M9W 5L7
-        </h3><br/>
-        <h3>Hours of Operation : </h3>
-        <ul>
-            <li>Monday-Friday: 9am-9pm</li><br/>
-            <li>Saturday: 10am-8pm</li><br/>
-            <li>Sunday: 10am-6pm</li><br/>
-        </ul>
-        <Link to='/ottomonMenu'>Main Page</Link>
-       </div>
-    )
-}
+const ContactUs = () => {
+  const [contactDetails, setContactDetails] = useState(null);
+  const [formSubmitted, setFormSubmitted] = useState(false);
+  const [formError, setFormError] = useState(null);
+
+  useEffect(() => {
+    fetch('http://localhost:8080/contact')
+      .then((response) => response.json())
+      .then((data) => setContactDetails(data))
+      .catch((error) => console.log(error));
+  }, []);
+
+  const handleSubmit = (formData) => {
+    fetch('http://localhost:8080/contact', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
+    })
+      .then(() => {
+        setFormSubmitted(true);
+      })
+      .catch((error) => {
+        setFormError(error.message);
+      });
+  };
+
+  return (
+    <div className="container">
+      <div className="contact-details">
+        <ContactDetails contactDetails={contactDetails} />
+      </div>
+      <div className="contact-form">
+        <ContactForm onSubmit={handleSubmit} formError={formError} />
+      </div>
+    </div>
+  );
+};
+
+export default ContactUs;
