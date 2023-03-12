@@ -10,14 +10,14 @@
   .container {
     flex-direction: column;
   }
-  .form-section,
+  .rform-section,
   .data-section,
   .ratings-section {
     flex-basis: 100%;
   }
 }
 
-.form-section {
+.rform-section {
   flex-basis: 100%;
   margin-bottom: 2rem;
   display: flex;
@@ -43,7 +43,9 @@
   flex-direction: column;
   justify-content: space-between; 
 }
-
+.reviews-section li {
+  color:white;
+}
 .review-form label {
   color: #fff;
   justify-content: center;
@@ -118,10 +120,6 @@
   margin-top: 0;
   font-size: 1.5rem;
   color: red;
-}
-
-.ratings-table ul,li {
-  color: white;
 }
 
 .ratings-table table {

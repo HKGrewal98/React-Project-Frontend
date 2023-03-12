@@ -23,16 +23,13 @@ export default function ReviewsPage() {
   };
 
   return (
-    <div style={{ color: 'red', marginTop: '100px' }}>
       <div className="container">
-        <div className="form-section">
+        <div className="rform-section">
           <ReviewsForm onSubmit={handleReviewSubmit} />
         </div>
         <div className="data-section">
           <ShowReview reviews={reviews} />
         </div>
       </div>
-      <Link to="/ottomonMenu">Main Page</Link>
-    </div>
   );
 }

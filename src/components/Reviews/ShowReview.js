@@ -47,7 +47,7 @@ return (
       ))}
     </ul><br/>
     <div className="ratings-table">
-      <h2>Ratings Summary :</h2>
+      <h2>Ratings Summary :</h2><br/>
       <table>
         <thead>
           <tr>

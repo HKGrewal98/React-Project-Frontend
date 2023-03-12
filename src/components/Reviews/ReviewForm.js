@@ -10,7 +10,7 @@ const ReviewForm = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     // Display success alert message
-    alert('Review stored successfully!');
+    alert('Review added successfully!');
     // Reset form fields
     setName('');
     setRating(0);
@@ -44,7 +44,7 @@ const ReviewForm = () => {
   
 
   return (
-    <div className="form-section">
+    <div className="rform-section">
       <form className="review-form" onSubmit={handleSubmit}>
       <h3>Add review :</h3><br/>
       <label>

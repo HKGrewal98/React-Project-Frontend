@@ -12,7 +12,7 @@ const ContactDetails = () => {
   }, []);
 
   return (
-    <div>
+    <div >
       {contactDetails ? (
         <div>
           <h2>Contact Us :-</h2><br/><br/>
